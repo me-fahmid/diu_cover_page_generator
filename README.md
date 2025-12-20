@@ -49,7 +49,7 @@ This project automates the formatting process and helps students create professi
 
 ---
 
-## github live preview: 
+## github live preview link: https://me-fahmid.github.io/diu_cover_page_generator/ 
 
 ## 📸 Project Preview
 <img width="889" height="912" alt="image" src="https://github.com/user-attachments/assets/aa72fa0f-7e76-4afe-9e08-ca36b9f3b4a9" />
