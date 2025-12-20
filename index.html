@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Academic PDF Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link
+     rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+</head>
+<body>
+
+<!-- Gradient Background -->
+<div class="bg-gradient"></div>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>Academic PDF Generator</h1>
+        <p>Create professional university evaluation & cover pages</p>
+
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class="card animate-in">
+
+        <!-- STUDENT INFORMATION -->
+        <input type="text" id="semester" placeholder="Semester (e.g. Fall 2025)">
+        <input type="text" id="name" placeholder="Student Name">
+        <input type="text" id="sid" placeholder="Student ID (e.g. 241-35-048)">
+        <input type="text" id="batch" placeholder="Batch">
+        <input type="text" id="section" placeholder="Section">
+
+        <!-- COURSE INFORMATION -->
+        <input type="text" id="course" placeholder="Course Name">
+        <input type="text" id="code" placeholder="Course Code (e.g. MM225)">
+        <input type="text" id="teacher" placeholder="Course Teacher Name">
+        <input type="text" id="designation" placeholder="Teacher Designation">
+        <input type="date" id="date">
+
+        <!-- ACTION BUTTON -->
+        <button onclick="generatePDF()">Generate & Download PDF</button>
+
+    </div>
+
+    <footer class="dev-footer">
+     <p>
+        Developed by <b>Fahmid Hasan Sunny</b> · 
+        <a href="https://www.instagram.com/fahm.codes" 
+           target="_blank" 
+           class="brand">
+            fahm.codes
+        </a>
+    </p>
+    <p>version:1.0</p>
+
+    <div class="social-links">
+        <a href="https://github.com/me-fahmid" target="_blank" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/me_fahmid" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </footer>
+
+
+</div>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
