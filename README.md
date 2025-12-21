@@ -1,4 +1,4 @@
-# 📘 Academic PDF Generator
+# 📘 DIU Cover Page Generator
 ### *(For Daffodil International University Students)*
 
 A professional web-based application designed to help **Daffodil International University (DIU)** students generate clean and well-formatted academic PDF documents such as course assignment reports and evaluation sheets.
