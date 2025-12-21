@@ -78,6 +78,13 @@ body.light {
     opacity: 0.85;
 }
 
+.site-logo {
+    width: 220px;
+    max-width: 80%;
+    margin-bottom: 12px;
+}
+
+
 /* ================= Creator Information ================= */
 .creator {
     margin-top: 10px;
@@ -199,7 +206,7 @@ button:hover {
 .dev-footer {
     margin-top: 40px;
     text-align: center;
-    font-size: 13px;
+    font-size: 18px;
     opacity: 0.85;
 }
 
@@ -225,7 +232,7 @@ button:hover {
 .social-links a {
     color: inherit;
     margin: 0 8px;
-    font-size: 18px;
+    font-size: 30px;
     opacity: 0.85;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
