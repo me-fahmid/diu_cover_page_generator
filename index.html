@@ -13,8 +13,8 @@
 
     <!-- Font Awesome -->
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
 </head>
 <body>
@@ -26,57 +26,87 @@
 
     <!-- HEADER -->
     <div class="header">
-      <img src="assets/diu-logo.png" alt="Daffodil International University Logo" class="site-logo">
+        <img src="assets/diu-logo.png"
+             alt="Daffodil International University Logo"
+             class="site-logo">
 
-       <h1>DIU Cover Page Generator</h1>
-       <p>Create professional university evaluation & cover pages</p>
+        <h1>DIU Cover Page Generator</h1>
+        <p>Create professional university evaluation & cover pages</p>
     </div>
-
 
     <!-- MAIN CARD -->
     <div class="card animate-in">
 
-        <!-- REPORT TYPE DROPDOWN -->
-        <select id="reportType">
-            <option value="course">Course Assignment Report</option>
-            <option value="lab-assignment">Lab / Project Assignment Report</option>
-            <option value="lab">Lab / Project Report</option>
-            <option value="final">Lab / Project Final Report</option>
-        </select>
+        <!-- REPORT TYPE -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-file-lines"></i> Report Type
+            </h3>
 
-        <!-- STUDENT INFORMATION -->
-        <input type="text" id="semester" placeholder="Semester (e.g. Fall 2025)">
-        <input type="text" id="name" placeholder="Student Name">
-        <input type="text" id="sid" placeholder="Student ID (e.g. 241-35-###)">
-        <input type="text" id="batch" placeholder="Batch">
-        <input type="text" id="section" placeholder="Section">
-        <input type="text" id="department" placeholder="Department">
+            <select id="reportType">
+                <option value="course">Course Assignment Report</option>
+                <option value="lab-assignment">Lab / Project Assignment Report</option>
+                <option value="lab">Lab / Project Report</option>
+                <option value="final">Lab / Project Final Report</option>
+            </select>
+        </div>
 
         <!-- COURSE INFORMATION -->
-        <input type="text" id="course" placeholder="Course Name">
-        <input type="text" id="code" placeholder="Course Code (e.g. MM225)">
-        <input type="text" id="teacher" placeholder="Course Teacher Name">
-        <input type="text" id="designation" placeholder="Teacher Designation">
-        <input type="text" id="t_department" placeholder="Teacher Department">
-        <input type="date" id="date">
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-book"></i> Course Information
+            </h3>
+
+            <input type="text" id="semester" placeholder="Semester (e.g. Fall 2025)">
+            <input type="text" id="course" placeholder="Course Name">
+            <input type="text" id="code" placeholder="Course Code (e.g. MM225)">
+            <input type="text" id="topic" placeholder="Topic Name">
+        </div>
+
+        <!-- SUBMITTED TO -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-user-tie"></i> Submitted To
+            </h3>
+
+            <input type="text" id="teacher" placeholder="Course Teacher Name">
+            <input type="text" id="designation" placeholder="Teacher Designation">
+            <input type="text" id="t_department" placeholder="Teacher Department">
+        </div>
+
+        <!-- SUBMITTED BY -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-user-graduate"></i> Submitted By
+            </h3>
+
+            <input type="text" id="name" placeholder="Student Name">
+            <input type="text" id="sid" placeholder="Student ID (e.g. 241-35-###)">
+            <input type="text" id="batch" placeholder="Batch">
+            <input type="text" id="section" placeholder="Section">
+            <input type="text" id="department" placeholder="Department">
+            <input type="date" id="date">
+        </div>
 
         <!-- ACTION BUTTON -->
-        <button onclick="generatePDF()">Generate & Download PDF</button>
+        <button onclick="generatePDF()">
+            Generate & Download PDF
+        </button>
 
     </div>
 
     <!-- FOOTER -->
     <footer class="dev-footer">
         <p>
-            Developed by <b>Fahmid Hasan Sunny</b> · 
-            <a href="https://www.instagram.com/fahm.codes" 
-               target="_blank" 
+            Developed by <b>Fahmid Hasan Sunny</b> ·
+            <a href="https://www.instagram.com/fahm.codes"
+               target="_blank"
                class="brand">
                 fahm.codes
             </a>
         </p>
 
-        <p>version: 1.0</p>
+        <p>Version: 1.0.2</p>
 
         <div class="social-links">
             <a href="https://github.com/me-fahmid" target="_blank" aria-label="GitHub">
