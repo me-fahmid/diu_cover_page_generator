@@ -1,287 +1,127 @@
-/* ================= ROOT VARIABLES ================= */
-:root {
-    --bg-dark: #0f0c29;
-    --bg-gradient: linear-gradient(135deg, #4f46e5, #9333ea, #0ea5e9);
-    --card-dark: rgba(255, 255, 255, 0.18);
-    --card-light: #ffffff;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DIU Cover Page Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    --text-dark: #ffffff;
-    --text-light: #111827;
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 
-    --primary: #4f46e5;
-    --secondary: #9333ea;
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    --shadow: 0 25px 60px rgba(0,0,0,0.25);
-}
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+</head>
+<body>
 
-/* ================= GLOBAL RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
+<!-- Gradient Background -->
+<div class="bg-gradient"></div>
 
-/* ================= BODY ================= */
-body {
-    min-height: 100vh;
-    background: var(--bg-dark);
-    color: var(--text-dark);
-    overflow-x: hidden;
-    transition: background 0.4s ease, color 0.4s ease;
-}
+<div class="app">
 
-/* ================= LIGHT MODE ================= */
-body.light {
-    background: #f4f6fb;
-    color: var(--text-light);
-}
+    <!-- HEADER -->
+    <div class="header">
+        <img src="assets/diu-logo.png"
+             alt="Daffodil International University Logo"
+             class="site-logo">
 
-/* ================= BACKGROUND ================= */
-.bg-gradient {
-    position: fixed;
-    inset: 0;
-    background: var(--bg-gradient);
-    z-index: -2;
-}
+        <h1>DIU Cover Page Generator</h1>
+        <p>Create professional university evaluation & cover pages</p>
+    </div>
 
-.bg-gradient::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at top, rgba(255,255,255,0.15), transparent 60%);
-}
+    <!-- MAIN CARD -->
+    <div class="card animate-in">
 
-/* ================= APP LAYOUT ================= */
-.app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-}
+        <!-- REPORT TYPE -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-file-lines"></i> Report Type
+            </h3>
 
-/* ================= HEADER ================= */
-.header {
-    text-align: center;
-    margin-bottom: 30px;
-    animation: fadeDown 1s ease;
-}
+            <select id="reportType">
+                <option value="course">Course Assignment Report</option>
+                <option value="lab-assignment">Lab / Project Assignment Report</option>
+                <option value="lab">Lab / Project Report</option>
+                <option value="final">Lab / Project Final Report</option>
+            </select>
+        </div>
 
-.header h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-}
+        <!-- COURSE INFORMATION -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-book"></i> Course Information
+            </h3>
 
-.header p {
-    margin-top: 8px;
-    opacity: 0.85;
-}
+            <input type="text" id="semester" placeholder="Semester (e.g. Fall 2025)">
+            <input type="text" id="course" placeholder="Course Name">
+            <input type="text" id="code" placeholder="Course Code (e.g. MM225)">
+            <input type="text" id="topic" placeholder="Topic Name">
+        </div>
 
-.site-logo {
-    width: 220px;
-    max-width: 80%;
-    margin-bottom: 12px;
-}
+        <!-- SUBMITTED TO -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-user-tie"></i> Submitted To
+            </h3>
 
+            <input type="text" id="teacher" placeholder="Course Teacher Name">
+            <input type="text" id="designation" placeholder="Teacher Designation">
+            <input type="text" id="t_department" placeholder="Teacher Department">
+        </div>
 
-/* ================= Creator Information ================= */
-.creator {
-    margin-top: 10px;
-    font-size: 14px;
-    opacity: 0.9;
-}
+        <!-- SUBMITTED BY -->
+        <div class="form-section">
+            <h3 class="section-title">
+                <i class="fa-solid fa-user-graduate"></i> Submitted By
+            </h3>
 
-.creator span {
-    opacity: 0.85;
-}
+            <input type="text" id="name" placeholder="Student Name">
+            <input type="text" id="sid" placeholder="Student ID (e.g. 241-35-###)">
+            <input type="text" id="batch" placeholder="Batch">
+            <input type="text" id="section" placeholder="Section">
+            <input type="text" id="department" placeholder="Department">
+            <input type="date" id="date">
+        </div>
 
+        <!-- ACTION BUTTON -->
+        <button onclick="generatePDF()">
+            Generate & Download PDF
+        </button>
 
-/* ================= THEME TOGGLE ================= */
-.theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    font-size: 22px;
-    z-index: 10;
-}
+    </div>
 
-/* ================= CARD ================= */
-.card {
-    width: 100%;
-    max-width: 720px;
-    background: var(--card-dark);
-    backdrop-filter: blur(16px);
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: var(--shadow);
-    animation: popUp 0.9s ease;
-}
+    <!-- FOOTER -->
+    <footer class="dev-footer">
+        <p>
+            Developed by <b>Fahmid Hasan Sunny</b> ·
+            <a href="https://www.instagram.com/fahm.codes"
+               target="_blank"
+               class="brand">
+                fahm.codes
+            </a>
+        </p>
 
-body.light .card {
-    background: var(--card-light);
-}
+        <p>Version: 1.0</p>
 
-/* ================= FORM ELEMENTS ================= */
-input, select {
-    width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 14px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    font-size: 15px;
-    background: rgba(255,255,255,0.95);
-    transition: all 0.3s ease;
-}
+        <div class="social-links">
+            <a href="https://github.com/me-fahmid" target="_blank" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/me_fahmid" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
 
-body.light input,
-body.light select {
-    background: #f9fafb;
-}
+</div>
 
-input:focus, select:focus {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 3px rgba(79,70,229,0.35);
-}
+<!-- JS -->
+<script src="js/script.js"></script>
 
-/* ================= BUTTON ================= */
-button {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #ffffff;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-}
-
-/* ================= LOADER ================= */
-.loader {
-    width: 42px;
-    height: 42px;
-    border: 4px solid rgba(255,255,255,0.3);
-    border-top: 4px solid #ffffff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    display: none;
-    margin: 20px auto 0;
-}
-
-/* ================= PREVIEW MODAL ================= */
-.preview {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 20;
-}
-
-.preview iframe {
-    width: 85%;
-    height: 85%;
-    border-radius: 14px;
-    background: #ffffff;
-    box-shadow: var(--shadow);
-}
-
-.preview button {
-    margin-top: 15px;
-    width: 150px;
-}
-
-/* ===== DEVELOPER FOOTER ===== */
-.dev-footer {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 18px;
-    opacity: 0.85;
-}
-
-.dev-footer .brand {
-    font-weight: 600;
-    opacity: 0.9;
-    text-decoration: none;
-    color: inherit;
-    transition: opacity 0.25s ease;
-}
-
-.dev-footer .brand:hover {
-    opacity: 1;
-    text-decoration: underline;
-}
-
-
-/* ===== SOCIAL LINKS ===== */
-.social-links {
-    margin-top: 8px;
-}
-
-.social-links a {
-    color: inherit;
-    margin: 0 8px;
-    font-size: 30px;
-    opacity: 0.85;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-.social-links a:hover {
-    transform: translateY(-3px);
-    opacity: 1;
-}
-
-
-/* ================= ANIMATIONS ================= */
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes popUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes fadeDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width: 600px) {
-    .header h1 {
-        font-size: 1.9rem;
-    }
-
-    .card {
-        padding: 22px;
-    }
-
-    .preview iframe {
-        width: 95%;
-        height: 80%;
-    }
-}
+</body>
+</html>
